@@ -27,7 +27,16 @@ const handler = (req, res) => {
         }
       ];
       console.log(craftObj);
-      return res.json(craftObj);
+      // let valueSSH  = (events[0].description.includes('is unreachable')) ? 0 : 1
+      // let valueHTTP = (events[1].description.includes('is unreachable')) ? 0 : 1
+      // let valueHost = (events[2].description.includes('is unreachable')) ? 0 : 1      // console.log('valueSSH: ', valueSSH, 'msg:', events[0].description)
+      // console.log('valueHTTP: ', valueHTTP, 'msg:', events[1].description)
+      // console.log('valueHost: ', valueHost, 'msg:', events[2].description)      // let ret = [
+      //   {name: 'SSH',  value: valueSSH, msg: events[0].description},
+      //   {name: 'HTTP', value: valueHTTP, msg: events[1].description},
+      //   {name: 'Host', value: valueHost, msg: events[2].description}
+      // ]
+      return craftObj;
     });
 };
 export default handler;

@@ -27,7 +27,7 @@ const handler = (req, res) => {
         }
       ];
       console.log(craftObj);
-      return res.json(craftObj);
+      return res.JSON(craftObj);
     });
 };
 export default handler;
