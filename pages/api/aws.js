@@ -17,7 +17,7 @@ const handler = (req, res) => {
       let maxCpuPercent = eventsObj[2].max;
       let maxMemoryPercent = eventsObj[3].result;
       let instanceType = eventsObj[4].latest;
-      let craftObj = [
+      let craftObj =
         {
           numCpu: numCpu,
           memTotalBytes: memTotalBytes,
@@ -25,7 +25,6 @@ const handler = (req, res) => {
           maxMemoryPercent: maxMemoryPercent,
           instanceType: instanceType
         }
-      ];
       console.log(craftObj);
       return res.json(craftObj);
     });
