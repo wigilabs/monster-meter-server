@@ -1,4 +1,3 @@
-const { send } = require('micro')
 const cors = require('micro-cors')()
 
 const superagent = require("superagent");
