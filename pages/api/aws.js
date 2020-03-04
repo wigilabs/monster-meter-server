@@ -1,3 +1,6 @@
+const { send } = require('micro')
+const cors = require('micro-cors')()
+
 const superagent = require("superagent");
 const handler = (req, res) => {
   let events;
@@ -29,4 +32,4 @@ const handler = (req, res) => {
       return res.json(craftObj);
     });
 };
-export default handler;
+export default cors(handler);
