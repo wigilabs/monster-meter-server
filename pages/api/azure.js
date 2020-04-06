@@ -26,7 +26,7 @@ const handler = (req, res) => {
         instanceType: instanceType
       }
 
-      const URL = 'https://insights-api.newrelic.com/v1/accounts/2482859/query?nrql=SELECT%20*%20FROM%20awsStatus%20SINCE%203%20weeks%20ago'
+      const URL = 'https://insights-api.newrelic.com/v1/accounts/2482859/query?nrql=SELECT%20*%20FROM%20azureStatus%20SINCE%203%20weeks%20ago'
       const headers = { "X-Query-Key": 'NRIQ-V-S-D7Tgcd4R7BHtumVd8QYaLVxzTDXG' }
 
       axios.get(URL, { headers })
@@ -34,7 +34,7 @@ const handler = (req, res) => {
         let status = response.data.results[0].events
 
         ret.status = status
-        // console.log('ret: ', ret)
+        console.log('ret: ', ret)
 
         return res.json(ret)
        })
