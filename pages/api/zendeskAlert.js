@@ -32,10 +32,8 @@ const handler = (req, res) => {
       axios.get(URL, { headers })
       .then(response => {
         let status = response.data.results[0].events
-
         ret.status = status
         // console.log('ret: ', ret)
-        
         return res.json(ret)
        })
     })

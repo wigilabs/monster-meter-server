@@ -27,7 +27,7 @@ const handler = (req, res) => {
       status = status.filter(state => state.type )
 
       ret.status = status
-
+      console.log(ret)
       return res.json(ret)
      })
 
