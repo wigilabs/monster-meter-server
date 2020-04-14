@@ -5,27 +5,22 @@ const superagent = require("superagent");
 const handler = (req, res) => {
 
   superagent
-    .get("https://insights-api.newrelic.com/v1/accounts/2482859/query?nrql=FROM+SystemSample+SELECT+latest(coreCount),+latest(memoryTotalBytes),+max(cpuPercent),+max(memoryUsedBytes/memoryTotalBytes)*100 , latest(instanceType) +WHERE+coreCount+is+not+null+and+((instanceType+is+not+null+AND+instanceType!='unknown')+OR+ec2InstanceType+is+not+null)+and+providerAccountName=634037824681+LIMIT+2000+since+1+week ago")
+    .get("https://insights.newrelic.com/accounts/2482859/query?query=SELECT%20uniques(ec2InstanceId)%20FROM%20SystemSample%20WHERE%20awsRegion%20is%20NOT%20NULL")
     .set("X-Query-Key", "NRIQ-V-S-D7Tgcd4R7BHtumVd8QYaLVxzTDXG")
     .set("Accept", "application/json")
     .end((err, response) => {
       let events = JSON.parse(response.text)
       let eventsObj = events.results
-
-      let numCpu = eventsObj[0].latest
-      let memTotalBytes = eventsObj[1].latest
-      let maxCpuPercent = eventsObj[2].max
-      let maxMemoryPercent = eventsObj[3].result
-      let instanceType = eventsObj[4].latest
+      let ec2Ids = []
+      var i
+      //for (i=0; i<=length(eventsObj); i++) {
+        //    ec2Ids.push(eventsObj[i]);
+          //                                 }
 
       let ret = {
-        numCpu: numCpu,
-        memTotalBytes: memTotalBytes,
-        maxCpuPercent: maxCpuPercent,
-        maxMemoryPercent: maxMemoryPercent,
-        instanceType: instanceType
+        ec2Ids: ec2Ids,
       }
-
+      console.log(ret)
       const URL = 'https://insights-api.newrelic.com/v1/accounts/2482859/query?nrql=SELECT%20*%20FROM%20awsStatus%20SINCE%203%20weeks%20ago'
       const headers = { "X-Query-Key": 'NRIQ-V-S-D7Tgcd4R7BHtumVd8QYaLVxzTDXG' }
 
