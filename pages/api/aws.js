@@ -34,8 +34,6 @@ const handler = (req, res) => {
         let status = response.data.results[0].events
 
         ret.status = status
-        // console.log('ret: ', ret)
-        
         return res.json(ret)
        })
     })
